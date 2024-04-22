@@ -1,14 +1,25 @@
 import { useState } from "react";
 import { Board } from "./components/Board";
+import { TURNS } from "./constants";
+import { Square } from "./components/Square";
 
 function App() {
-  const board = Array(9).fill(null);
+  const [board, setBoard] = useState(Array(9).fill(null));
+  const [turn, setTurn] = useState(TURNS.X);
 
+  const updateBoard = (index) => {
+    const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
+    setTurn(newTurn);
+  };
   return (
     <main className="board">
       <h1> Tres en raya</h1>
+      <Board board={board} updateBoard={updateBoard} />
 
-      <Board board={board} />
+      <section className="turn">
+        <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
+        <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
+      </section>
     </main>
   );
 }

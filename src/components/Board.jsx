@@ -1,15 +1,16 @@
 import { Square } from "./Square";
 
-export function Board({ board }) {
+// eslint-disable-next-line react/prop-types
+export function Board({ board, updateBoard }) {
   return (
-    <secion className="game">
+    <section className="game">
       {board.map((_, index) => {
         return (
-          <Square Key={index} index={index}>
+          <Square key={index} index={index} updateBoard={updateBoard}>
             {index}
           </Square>
         );
       })}
-    </secion>
+    </section>
   );
 }
