@@ -7,7 +7,7 @@ export function Board({ board, updateBoard }) {
       {board.map((_, index) => {
         return (
           <Square key={index} index={index} updateBoard={updateBoard}>
-            {index}
+            {board[index]}
           </Square>
         );
       })}
